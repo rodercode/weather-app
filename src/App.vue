@@ -45,7 +45,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 body,
 .container-weather-data,
 .container-hourly-forecast,

@@ -15,3 +15,12 @@ export default defineComponent({
   components: {},
 });
 </script>
+
+<style scoped>
+header {
+  background-color: rgb(185, 176, 176);
+  text-align: center;
+  padding: 1.5em;
+  margin-bottom: 1em;
+}
+</style>
