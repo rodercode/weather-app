@@ -44,6 +44,81 @@ export default defineComponent({
 </script>
 
 <style>
+body,
+.container-weather-data,
+.container-hourly-forecast,
+.box-city {
+  border: 1px solid black;
+}
 
+.box-city,
+.search-field {
+  margin-bottom: 1em;
+}
 
+.container-main {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.section-history {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.box-city {
+  padding: 0.5em 2.25em 0 2.25em;
+  background-color: rgb(185, 176, 176);
+  border-radius: 7px;
+}
+
+.search-field {
+  width: 100%;
+
+  font-size: 24px;
+  padding: 0.25em 0;
+  text-align: center;
+}
+.container-weather-data {
+  padding: 2em;
+  margin-bottom: 1.5em;
+}
+.section-temp {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 3em;
+}
+.temp-icon,
+.temp-data {
+  font-size: 24px;
+}
+.paragraph-weather-info {
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 19px;
+}
+
+.section-additonal-weather-info {
+  display: flex;
+  gap: 1em;
+}
+
+.subtitle-hourly-forecast {
+  text-align: center;
+  margin-bottom: 0.25em;
+}
+
+.container-hourly-forecast {
+  padding: 2em;
+}
+.list-hourly-forecast {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.item-hourly-forecast {
+  font-size: 20px;
+}
 </style>
