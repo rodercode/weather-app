@@ -1,7 +1,5 @@
 <template>
   <TopHeader title="App Logo/title" />
-  <h1>{{ lon }}</h1>
-  <h1>{{ lat }}</h1>
   <div class="container-main">
     <section class="section-history">
       <div class="box-city">city_1</div>
@@ -11,6 +9,9 @@
 
     <input class="search-field" placeholder="Search Field" type="text" />
     <div class="container-weather-data">
+      <h1>{{ lat }}</h1>
+      <h1>{{ lon }}</h1>
+
       <section class="section-temp">
         <span class="temp-icon">Icon</span>
         <span class="temp-data">{{ weather.temp }}°C</span>
@@ -48,13 +49,21 @@ export default defineComponent({
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-      city: "Stockholm",
+      city: "London",
       unit: "&units=metric",
       weather: {} as Weather,
+      lon: 0,
+      lat: 0,
     };
   },
   mounted: function () {
     this.fetchCityCoord();
+  },
+  watch: {
+    lon() {
+      this.fetchWeather();
+      console.log("lon has change");
+    },
   },
   methods: {
     // Fetch data from Gecoding
@@ -66,20 +75,17 @@ export default defineComponent({
       axios
         .get(url)
         .then((res) => {
-          const lon = res.data[0].lon;
-          const lat = res.data[0].lat;
-          this.fetchWeather(lon, lat)
+          this.lon = res.data[0].lon;
+          this.lat = res.data[0].lat;
         })
         .catch((err) => console.log(err));
     },
     // Fetch Weather Data
-    fetchWeather(lat:number, lon:number) {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}${this.unit}`;
-
+    fetchWeather() {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
       axios
         .get(url)
         .then((res) => {
-          console.log(res.data);
           this.weather.temp = res.data.main.temp;
           this.weather.description = res.data.weather[0].description;
           this.weather.humidity = res.data.main.humidity;
