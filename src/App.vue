@@ -8,7 +8,8 @@
     </section>
 
     <input class="search-field" placeholder="Enter A Country..." type="text" />
-    <button class="btn-search">Search</button>
+    <ButtonSearch text="Search" />
+
     <div class="container-weather-data">
       <section class="section-temp">
         <span class="temp-icon">Icon</span>
@@ -36,14 +37,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+// Child Components
 import TopHeader from "./components/TopHeader.vue";
+import ButtonSearch from "./components/ButtonSearch.vue";
+
 import axios from "axios";
 import { Weather } from "./model/weather";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
-  components: { TopHeader },
+  components: { TopHeader, ButtonSearch },
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
@@ -105,16 +109,15 @@ body,
   margin-bottom: 1.5em;
 }
 
-
 .search-field {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
-.btn-search{
+.btn-search {
   width: 100%;
   font-size: 26px;
-  padding: .25em 1em;
-  margin-bottom:1em;
+  padding: 0.25em 1em;
+  margin-bottom: 1em;
 }
 
 .container-main {
