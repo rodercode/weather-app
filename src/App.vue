@@ -7,23 +7,14 @@
       <div class="box-city">city_3</div>
     </section>
 
-    <input class="search-field" placeholder="Enter A Country..." v-model="inputCity" type="text" />
+    <input
+      class="search-field"
+      placeholder="Enter A Country..."
+      v-model="inputCity"
+      type="text"
+    />
     <ButtonSearch text="Search" @customMethod="renderWeather" />
-
-    <div class="container-weather-data">
-      <section class="section-temp">
-        <span class="temp-icon">Icon</span>
-        <span class="temp-data">{{ weather.temp }}°C</span>
-      </section>
-
-      <p class="paragraph-weather-info">{{ weather.description }}</p>
-
-      <section class="section-additonal-weather-info">
-        <span class="humidity">{{ weather.humidity }}%</span>
-        <span class="pressure">{{ weather.pressure }} hPa</span>
-        <span class="wind">{{ weather.wind }} m/s</span>
-      </section>
-    </div>
+    <DisplayWeather :weather="weather" />
 
     <h3 class="subtitle-hourly-forecast">Hourly forecast</h3>
     <div class="container-hourly-forecast">
@@ -40,6 +31,7 @@
 // Child Components
 import TopHeader from "./components/TopHeader.vue";
 import ButtonSearch from "./components/ButtonSearch.vue";
+import DisplayWeather from "./components/DisplayWeather.vue";
 
 import axios from "axios";
 import { Weather } from "./model/weather";
@@ -47,20 +39,16 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
-  components: { TopHeader, ButtonSearch },
+  components: { TopHeader, ButtonSearch, DisplayWeather },
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-      city: "Malmö",
       unit: "&units=metric",
       weather: {} as Weather,
       lon: 0,
       lat: 0,
-      inputCity: null,
+      inputCity: "",
     };
-  },
-  mounted: function () {
-    this.fetchCityCoord();
   },
   watch: {
     lat() {
@@ -69,13 +57,13 @@ export default defineComponent({
   },
   methods: {
     renderWeather() {
-      console.log(this.inputCity);
+      this.fetchCityCoord(this.inputCity);
     },
     // Fetch data from Gecoding
-    fetchCityCoord() {
-      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${
-        this.city
-      }&limit=${1}&appid=${this.apiKey}`;
+    fetchCityCoord(city: string) {
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${1}&appid=${
+        this.apiKey
+      }`;
 
       axios
         .get(url)
