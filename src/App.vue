@@ -87,6 +87,7 @@ export default defineComponent({
       axios
         .get(url)
         .then((res) => {
+          this.weather.city = res.data.name;
           this.weather.temp = res.data.main.temp;
           this.weather.description = res.data.weather[0].description;
           this.weather.humidity = res.data.main.humidity;

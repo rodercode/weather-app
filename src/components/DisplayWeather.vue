@@ -1,6 +1,7 @@
 <template>
   <!-- Display Weather -->
   <div v-if="lon !== 0 || lat !== 0" class="container-weather-data">
+    <h3 class="city-title">{{ weather.city }}</h3>
     <section class="section-temp">
       <span class="temp-icon">Icon</span>
       <span class="temp-data">{{ weather.temp }}°C</span>
@@ -40,10 +41,15 @@ export default defineComponent({
 
 <style scoped>
 .container-weather-data {
-  padding: 2em;
+  padding: 1em 2em 2em 2em;
   border: 1px solid black;
   margin-bottom: 1.5em;
 }
+
+.city-title {
+  margin-bottom: 1em;
+}
+
 .section-temp {
   display: flex;
   justify-content: space-between;
