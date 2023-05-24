@@ -113,13 +113,6 @@ body,
   margin-bottom: 0.5em;
 }
 
-.btn-search {
-  width: 100%;
-  font-size: 26px;
-  padding: 0.25em 1em;
-  margin-bottom: 1em;
-}
-
 .container-main {
   padding-left: 2em;
   padding-right: 2em;

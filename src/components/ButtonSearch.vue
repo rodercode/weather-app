@@ -13,4 +13,11 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style scoped>
+.btn-search {
+  width: 100%;
+  font-size: 26px;
+  padding: 0.25em 1em;
+  margin-bottom: 1em;
+}
+</style>
