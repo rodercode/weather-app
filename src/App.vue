@@ -41,6 +41,7 @@
 import { defineComponent } from "vue";
 import TopHeader from "./components/TopHeader.vue";
 import axios from "axios";
+import { Weather } from "./model/weather";
 
 export default defineComponent({
   name: "App",
@@ -52,7 +53,7 @@ export default defineComponent({
       lat: 0,
       lon: 0,
       unit: "&units=metric",
-      currentWeather : {} as Weather
+      weather: {} as Weather,
     };
   },
   mounted: function () {
@@ -80,7 +81,10 @@ export default defineComponent({
 
       axios
         .get(url)
-        .then((res) => console.log(res.data))
+        .then((res) => {
+          console.log(res.data);
+
+        })
         .catch((err) => console.log(err));
     },
   },
