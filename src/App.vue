@@ -50,6 +50,10 @@ export default defineComponent({
       lon: 0,
       unit: "&units=metric",
     }
+  },
+  mounted: function () {
+    this.fetchCityCoord();
+    this.fetchWeather();
   }
 });
 </script>
