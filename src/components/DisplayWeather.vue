@@ -47,7 +47,7 @@ export default defineComponent({
 }
 
 .city-title {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .section-temp {
