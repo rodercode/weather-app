@@ -49,20 +49,20 @@ export default defineComponent({
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-      city: "London",
+      city: "Sweden",
       unit: "&units=metric",
       weather: {} as Weather,
       lon: 0,
       lat: 0,
+      readyToFetch: false,
     };
   },
   mounted: function () {
     this.fetchCityCoord();
   },
   watch: {
-    lon() {
+    lat() {
       this.fetchWeather();
-      console.log("lon has change");
     },
   },
   methods: {
