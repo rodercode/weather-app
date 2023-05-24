@@ -7,7 +7,7 @@
       <div class="box-city">city_3</div>
     </section>
 
-    <input class="search-field" placeholder="Enter A Country..." type="text" />
+    <input class="search-field" placeholder="Enter A Country..." v-model="inputCity" type="text" />
     <ButtonSearch text="Search" @customMethod="renderWeather" />
 
     <div class="container-weather-data">
@@ -56,7 +56,7 @@ export default defineComponent({
       weather: {} as Weather,
       lon: 0,
       lat: 0,
-      readyToFetch: false,
+      inputCity: null,
     };
   },
   mounted: function () {
@@ -69,7 +69,7 @@ export default defineComponent({
   },
   methods: {
     renderWeather() {
-      console.log("Weather is rendering");
+      console.log(this.inputCity);
     },
     // Fetch data from Gecoding
     fetchCityCoord() {
