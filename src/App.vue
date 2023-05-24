@@ -7,7 +7,7 @@
       <div class="box-city">city_3</div>
     </section>
 
-    <input class="search-field" placeholder="Search Field" type="text" />
+    <input class="search-field" placeholder="Enter A Country..." type="text" />
     <button class="btn-search">Search</button>
     <div class="container-weather-data">
       <section class="section-temp">
