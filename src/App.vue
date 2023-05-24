@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts">
+
 // Child Components
 import TopHeader from "./components/TopHeader.vue";
 import ButtonSearch from "./components/ButtonSearch.vue";
@@ -140,7 +141,6 @@ body,
   justify-content: center;
   gap: 30px;
 }
-
 .item-hourly-forecast {
   font-size: 20px;
 }
