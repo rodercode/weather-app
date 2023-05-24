@@ -8,10 +8,8 @@
     </section>
 
     <input class="search-field" placeholder="Search Field" type="text" />
+    <button class="btn-search">Search</button>
     <div class="container-weather-data">
-      <h1>{{ lat }}</h1>
-      <h1>{{ lon }}</h1>
-
       <section class="section-temp">
         <span class="temp-icon">Icon</span>
         <span class="temp-data">{{ weather.temp }}°C</span>
@@ -49,7 +47,7 @@ export default defineComponent({
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-      city: "Sweden",
+      city: "Malmö",
       unit: "&units=metric",
       weather: {} as Weather,
       lon: 0,
