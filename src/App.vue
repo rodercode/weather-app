@@ -8,7 +8,7 @@
     </section>
 
     <input class="search-field" placeholder="Enter A Country..." type="text" />
-    <ButtonSearch text="Search" @customMethod="pressButton"/>
+    <ButtonSearch text="Search" @customMethod="renderWeather" />
 
     <div class="container-weather-data">
       <section class="section-temp">
@@ -68,8 +68,8 @@ export default defineComponent({
     },
   },
   methods: {
-    pressButton(){
-      console.log('press a button oh yeah');
+    renderWeather() {
+      console.log("Weather is rendering");
     },
     // Fetch data from Gecoding
     fetchCityCoord() {
@@ -115,8 +115,6 @@ body,
 .search-field {
   margin-bottom: 0.5em;
 }
-
-
 
 .container-main {
   padding-left: 2em;
