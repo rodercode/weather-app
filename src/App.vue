@@ -93,7 +93,6 @@ export default defineComponent({
 
 <style scoped>
 body,
-.container-weather-data,
 .container-hourly-forecast,
 .box-city {
   border: 1px solid black;
@@ -126,30 +125,6 @@ body,
   font-size: 24px;
   padding: 0.25em 0;
   text-align: center;
-}
-.container-weather-data {
-  padding: 2em;
-  margin-bottom: 1.5em;
-}
-.section-temp {
-  display: flex;
-  justify-content: space-between;
-
-  margin-bottom: 3em;
-}
-.temp-icon,
-.temp-data {
-  font-size: 24px;
-}
-.paragraph-weather-info {
-  text-align: center;
-  margin-bottom: 2em;
-  font-size: 19px;
-}
-
-.section-additonal-weather-info {
-  display: flex;
-  gap: 1em;
 }
 
 .subtitle-hourly-forecast {
