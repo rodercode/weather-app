@@ -13,16 +13,15 @@
     <div class="container-weather-data">
       <section class="section-temp">
         <span class="temp-icon">Icon</span>
-        <span class="temp-data">Temparture</span>
+        <span class="temp-data">{{ weather.temp }}°C</span>
       </section>
 
-      <p class="paragraph-weather-info">weather description</p>
+      <p class="paragraph-weather-info">{{ weather.description }}</p>
 
       <section class="section-additonal-weather-info">
-        <span class="humidity">humidity</span>
-        <span class="pressure">pressure</span>
-        <span class="wind">wind</span>
-        <span class="speed">speed</span>
+        <span class="humidity">{{ weather.humidity }}%</span>
+        <span class="pressure">{{ weather.pressure }} hPa</span>
+        <span class="wind">{{ weather.wind }} m/s</span>
       </section>
     </div>
 
@@ -82,7 +81,6 @@ export default defineComponent({
       axios
         .get(url)
         .then((res) => {
-          console.log(res.data.wind.speed);
           this.weather.temp = res.data.main.temp;
           this.weather.description = res.data.weather[0].description;
           this.weather.humidity = res.data.main.humidity;
