@@ -48,16 +48,13 @@ export default defineComponent({
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
-      city: "pajala",
-      lat: 0,
-      lon: 0,
+      city: "Stockholm",
       unit: "&units=metric",
       weather: {} as Weather,
     };
   },
   mounted: function () {
     this.fetchCityCoord();
-    this.fetchWeather();
   },
   methods: {
     // Fetch data from Gecoding
@@ -69,18 +66,20 @@ export default defineComponent({
       axios
         .get(url)
         .then((res) => {
-          this.lon = res.data[0].lon;
-          this.lat = res.data[0].lat;
+          const lon = res.data[0].lon;
+          const lat = res.data[0].lat;
+          this.fetchWeather(lon, lat)
         })
         .catch((err) => console.log(err));
     },
     // Fetch Weather Data
-    fetchWeather() {
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
+    fetchWeather(lat:number, lon:number) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}${this.unit}`;
 
       axios
         .get(url)
         .then((res) => {
+          console.log(res.data);
           this.weather.temp = res.data.main.temp;
           this.weather.description = res.data.weather[0].description;
           this.weather.humidity = res.data.main.humidity;
