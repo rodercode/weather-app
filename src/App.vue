@@ -54,6 +54,22 @@ export default defineComponent({
   mounted: function () {
     this.fetchCityCoord();
     this.fetchWeather();
+  },
+  methods:{
+    // Fetch data from Gecoding
+    fetchCityCoord() {
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${
+        this.city
+      }&limit=${1}&appid=${this.apiKey}`;
+
+      axios
+        .get(url)
+        .then((res) => {
+          this.lon = res.data[0].lon;
+          this.lat = res.data[0].lat;
+        })
+        .catch((err) => console.log(err));
+    },
   }
 });
 </script>
