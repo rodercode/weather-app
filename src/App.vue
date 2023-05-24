@@ -52,6 +52,7 @@ export default defineComponent({
       lat: 0,
       lon: 0,
       unit: "&units=metric",
+      currentWeather : {} as Weather
     };
   },
   mounted: function () {
