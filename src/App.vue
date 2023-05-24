@@ -28,7 +28,6 @@
 </template>
 
 <script lang="ts">
-
 // Child Components
 import TopHeader from "./components/TopHeader.vue";
 import ButtonSearch from "./components/ButtonSearch.vue";
@@ -57,8 +56,12 @@ export default defineComponent({
     },
   },
   methods: {
+    resetInput() {
+      this.inputCity = "";
+    },
     renderWeather() {
       this.fetchCityCoord(this.inputCity);
+      this.resetInput();
     },
     // Fetch data from Gecoding
     fetchCityCoord(city: string) {
