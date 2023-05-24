@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-search">{{ text }}</button>
+  <button class="btn-search" @click="handleButton">{{ text }}</button>
 </template>
 
 <script>
@@ -9,12 +9,11 @@ export default defineComponent({
   props: {
     text: String,
   },
-  methods:{
-    handleButton(){
-      console.log('button was pressed');
-    }
-  }
-  
+  methods: {
+    handleButton() {
+      this.$emit("customMethod");
+    },
+  },
 });
 </script>
 

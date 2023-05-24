@@ -8,7 +8,7 @@
     </section>
 
     <input class="search-field" placeholder="Enter A Country..." type="text" />
-    <ButtonSearch text="Search" />
+    <ButtonSearch text="Search" @customMethod="pressButton"/>
 
     <div class="container-weather-data">
       <section class="section-temp">
@@ -68,6 +68,9 @@ export default defineComponent({
     },
   },
   methods: {
+    pressButton(){
+      console.log('press a button oh yeah');
+    },
     // Fetch data from Gecoding
     fetchCityCoord() {
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${
@@ -112,6 +115,8 @@ body,
 .search-field {
   margin-bottom: 0.5em;
 }
+
+
 
 .container-main {
   padding-left: 2em;
