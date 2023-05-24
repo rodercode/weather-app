@@ -73,6 +73,7 @@ export default defineComponent({
         })
         .catch((err) => console.log(err));
     },
+    // Fetch Weather Data
     fetchWeather() {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
 
