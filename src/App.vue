@@ -42,6 +42,15 @@ import TopHeader from "./components/TopHeader.vue";
 export default defineComponent({
   name: "App",
   components: { TopHeader },
+  data(){
+    return{
+      apiKey: import.meta.env.VITE_API_KEY,
+      city: "pajala",
+      lat: 0,
+      lon: 0,
+      unit: "&units=metric",
+    }
+  }
 });
 </script>
 
