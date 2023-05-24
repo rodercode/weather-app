@@ -9,7 +9,12 @@ export default defineComponent({
   props: {
     text: String,
   },
-  components: {},
+  methods:{
+    handleButton(){
+      console.log('button was pressed');
+    }
+  }
+  
 });
 </script>
 
