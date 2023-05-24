@@ -102,11 +102,19 @@ body,
 .container-hourly-forecast,
 .box-city {
   border: 1px solid black;
+  margin-bottom: 1.5em;
 }
 
-.box-city,
+
 .search-field {
-  margin-bottom: 1em;
+  margin-bottom: .5em;
+}
+
+.btn-search{
+  width: 100%;
+  font-size: 26px;
+  padding: .25em 1em;
+  margin-bottom:1em;
 }
 
 .container-main {
