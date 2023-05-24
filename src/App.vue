@@ -70,6 +70,14 @@ export default defineComponent({
         })
         .catch((err) => console.log(err));
     },
+    fetchWeather() {
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
+
+      axios
+        .get(url)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err));
+    },
   }
 });
 </script>
