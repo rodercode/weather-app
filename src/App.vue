@@ -14,7 +14,7 @@
       type="text"
     />
     <ButtonSearch text="Search" @customMethod="renderWeather" />
-    <DisplayWeather :weather="weather" />
+    <DisplayWeather :weather="weather" :lon="lon" :lat="lat" />
 
     <h3 class="subtitle-hourly-forecast">Hourly forecast</h3>
     <div class="container-hourly-forecast">
@@ -50,6 +50,10 @@ export default defineComponent({
       inputCity: "",
     };
   },
+  mounted() {
+    this.fetchCityCoord("Stockholm");
+  },
+
   watch: {
     lat() {
       this.fetchWeather();

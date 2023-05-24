@@ -1,6 +1,6 @@
 <template>
   <!-- Display Weather -->
-  <div class="container-weather-data">
+  <div v-if="lon !== 0 || lat !== 0" class="container-weather-data">
     <section class="section-temp">
       <span class="temp-icon">Icon</span>
       <span class="temp-data">{{ weather.temp }}°C</span>
@@ -13,6 +13,9 @@
       <span class="pressure">{{ weather.pressure }} hPa</span>
       <span class="wind">{{ weather.wind }} m/s</span>
     </section>
+  </div>
+  <div v-else>
+    <h3>Loading...</h3>
   </div>
   <!-- End of Display Weather -->
 </template>
@@ -29,6 +32,8 @@ export default defineComponent({
       type: Object as PropType<Weather>,
       required: true,
     },
+    lon: Number,
+    lat: Number,
   },
 });
 </script>
