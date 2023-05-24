@@ -82,8 +82,12 @@ export default defineComponent({
       axios
         .get(url)
         .then((res) => {
-          console.log(res.data);
-
+          console.log(res.data.wind.speed);
+          this.weather.temp = res.data.main.temp;
+          this.weather.description = res.data.weather[0].description;
+          this.weather.humidity = res.data.main.humidity;
+          this.weather.pressure = res.data.main.pressure;
+          this.weather.wind = res.data.wind.speed;
         })
         .catch((err) => console.log(err));
     },
