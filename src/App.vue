@@ -1,5 +1,7 @@
 <template>
   <TopHeader title="App Logo/title" />
+  <h1>{{ lon }}</h1>
+  <h1>{{ lat }}</h1>
   <div class="container-main">
     <section class="section-history">
       <div class="box-city">city_1</div>
@@ -38,24 +40,25 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import TopHeader from "./components/TopHeader.vue";
+import axios from "axios";
 
 export default defineComponent({
   name: "App",
   components: { TopHeader },
-  data(){
-    return{
-      apiKey: import.meta.env.VITE_API_KEY,
+  data() {
+    return {
+      apiKey: process.env.VUE_APP_WEATHER_API_KEY,
       city: "pajala",
       lat: 0,
       lon: 0,
       unit: "&units=metric",
-    }
+    };
   },
   mounted: function () {
     this.fetchCityCoord();
     this.fetchWeather();
   },
-  methods:{
+  methods: {
     // Fetch data from Gecoding
     fetchCityCoord() {
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${
@@ -78,7 +81,7 @@ export default defineComponent({
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err));
     },
-  }
+  },
 });
 </script>
 
