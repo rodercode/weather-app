@@ -1,5 +1,4 @@
 <template>
-  <!-- Display Weather -->
   <div v-if="lon !== 0 || lat !== 0" class="container-weather-data">
     <h3 class="city-title">{{ weather.city }}</h3>
     <section class="section-temp">
@@ -16,9 +15,8 @@
     </section>
   </div>
   <div v-else>
-    <h3>Loading...</h3>
+    <h3>Loading Weather Data...</h3>
   </div>
-  <!-- End of Display Weather -->
 </template>
 
 <script lang="ts">

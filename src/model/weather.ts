@@ -1,5 +1,6 @@
 export interface Weather {
   city: string;
+  time: string;
   temp: number;
   description: string;
   humidity: number;
@@ -7,3 +8,6 @@ export interface Weather {
   wind: number;
   speed: number;
 }
+
+
+
