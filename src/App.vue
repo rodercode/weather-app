@@ -118,6 +118,10 @@ export default defineComponent({
             let weather = {} as Weather;
             weather.temp = res.data.list[i].main.temp;
             weather.time = this.convertTime(res.data.list[i].dt_txt);
+            weather.img =
+            "https://openweathermap.org/img/wn/" +
+            res.data.list[i].weather[0].icon +
+            ".png";
             this.weatherList.push(weather);
           }
         })

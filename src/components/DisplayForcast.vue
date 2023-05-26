@@ -6,7 +6,9 @@
       :key="weather.temp"
       class="list-hourly-forecast"
     >
-      <li class="item-hourly-forecast">icon</li>
+      <li class="item-hourly-forecast">
+        <img :src="weather.img" alt="" />
+      </li>
       <li class="item-hourly-forecast">{{ weather.temp }}°C</li>
       <li class="item-hourly-forecast">{{ weather.time }}</li>
     </ul>
