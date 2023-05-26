@@ -15,19 +15,7 @@
     />
     <ButtonSearch text="Search" @customMethod="renderWeather" />
     <DisplayWeather :weather="currentWeather" :lon="lon" :lat="lat" />
-
-    <h3 class="subtitle-hourly-forecast">Hourly forecast</h3>
-    <div class="container-hourly-forecast">
-      <ul
-        v-for="weather in weatherList"
-        :key="weather.temp"
-        class="list-hourly-forecast"
-      >
-        <li class="item-hourly-forecast">icon</li>
-        <li class="item-hourly-forecast">{{ weather.temp }}°C</li>
-        <li class="item-hourly-forecast">{{ weather.time }}</li>
-      </ul>
-    </div>
+    <DisplayForcast :weatherList="weatherList" />
   </div>
 </template>
 
@@ -36,6 +24,7 @@
 import TopHeader from "./components/TopHeader.vue";
 import ButtonSearch from "./components/ButtonSearch.vue";
 import DisplayWeather from "./components/DisplayWeather.vue";
+import DisplayForcast from "./components/DisplayForcast.vue";
 
 import axios, { Axios } from "axios";
 import { Weather } from "./model/weather";
@@ -43,7 +32,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
-  components: { TopHeader, ButtonSearch, DisplayWeather },
+  components: { TopHeader, ButtonSearch, DisplayWeather, DisplayForcast },
   data() {
     return {
       apiKey: process.env.VUE_APP_WEATHER_API_KEY,
@@ -129,7 +118,6 @@ export default defineComponent({
 
 <style scoped>
 body,
-.container-hourly-forecast,
 .box-city {
   border: 1px solid black;
   margin-bottom: 1.5em;
@@ -161,22 +149,5 @@ body,
   font-size: 24px;
   padding: 0.25em 0;
   text-align: center;
-}
-
-.subtitle-hourly-forecast {
-  text-align: center;
-  margin-bottom: 0.25em;
-}
-
-.container-hourly-forecast {
-  padding: 2em;
-}
-.list-hourly-forecast {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-.item-hourly-forecast {
-  font-size: 20px;
 }
 </style>
