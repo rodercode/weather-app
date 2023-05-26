@@ -41,6 +41,7 @@ export default defineComponent({
       lon: 18,
       lat: 59.3,
       inputCity: "",
+      city: "",
       weatherList: [] as Weather[],
     };
   },
@@ -71,8 +72,18 @@ export default defineComponent({
     resetInput() {
       this.inputCity = "";
     },
+    // displayInput() {
+    //   this.city = localStorage.getItem("city");
+    //   console.log(this.testValue);
+    // },
+    storeInput() {
+      if (this.inputCity !== null || this.inputCity !== "") {
+        localStorage.setItem("city", (this.city = this.inputCity));
+      }
+    },
     renderWeather() {
       this.fetchCityCoord(this.inputCity);
+      this.storeInput();
     },
     // Fetch data from Gecoding
     fetchCityCoord(city: string) {
@@ -119,9 +130,9 @@ export default defineComponent({
             weather.temp = res.data.list[i].main.temp;
             weather.time = this.convertTime(res.data.list[i].dt_txt);
             weather.icon =
-            "https://openweathermap.org/img/wn/" +
-            res.data.list[i].weather[0].icon +
-            ".png";
+              "https://openweathermap.org/img/wn/" +
+              res.data.list[i].weather[0].icon +
+              ".png";
             this.weatherList.push(weather);
           }
         })
