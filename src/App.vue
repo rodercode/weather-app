@@ -185,7 +185,7 @@ body {
 }
 
 .box-city {
-  padding: 0.5em 2.25em 0 2.25em;
+  padding: 0em 1em;
   border-radius: 7px;
   margin-bottom: 1.5em;
 }
@@ -200,6 +200,4 @@ body {
   padding: 0.25em 0;
   text-align: center;
 }
-
-
 </style>
