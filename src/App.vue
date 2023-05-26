@@ -77,6 +77,10 @@ export default defineComponent({
     displayInput() {
       const city = localStorage.getItem("city");
       if (typeof city === "string") {
+        if (this.cities.length > 2) {
+          console.log("list is of size 3 or more");
+          this.cities.splice(-1);
+        }
         this.cities.unshift(city);
       }
     },
