@@ -1,9 +1,9 @@
 <template>
-  <TopHeader title="App Logo/title" />
+  <TopHeader title="Weather Nation" />
   <div class="container-main">
     <section v-if="cities.length !== 0" class="section-history">
       <div v-for="city in cities" :key="city" class="box-city">
-        <button @click="handleButton">{{ city }}</button>
+        <button class="btn-city" @click="cityButton">{{ city }}</button>
       </div>
     </section>
 
@@ -46,54 +46,66 @@ export default defineComponent({
       weatherList: [] as Weather[],
     };
   },
+  // Run after refreshing the webpage
   mounted() {
     this.fetchCityCoord("Stockholm");
+    this.displayCities();
   },
 
+  // Run if lat has been updated
   watch: {
     lat() {
       this.fetchWeather();
       this.fetchWeatherForecast();
     },
-    // inputCity() {
-    //   this.fetchCityCoord(this.inputCity);
-    // },
   },
   methods: {
-    handleButton(e: Event) {
-      const city = e.target.textContent;
-      this.fetchCityCoord(city);
+    //
+    cityButton(e: Event) {
+      const target = e.target as HTMLElement;
+      const city = target.textContent;
+      this.fetchCityCoord(city || "{}");
     },
 
+    // Convert to Time only
     convertTime(dt_txt: string): string {
       const date = new Date(dt_txt);
       const time = date.toLocaleTimeString([], { timeStyle: "short" });
       console.log(time);
       return time;
     },
+
+    // Reset search field
     resetInput() {
       this.inputCity = "";
     },
-    displayInput() {
-      const city = localStorage.getItem("city");
+
+    // Add city name to cities list
+    addCity() {
+      const city = this.inputCity;
       if (typeof city === "string") {
         if (this.cities.length > 2) {
-          console.log("list is of size 3 or more");
           this.cities.splice(-1);
         }
         this.cities.unshift(city);
       }
     },
-    storeInput() {
-      if (this.inputCity !== null || this.inputCity !== "") {
-        localStorage.setItem("city", this.inputCity);
-      }
+    // Store cities in browser locale memory
+    storeCities() {
+      localStorage.setItem("cities", JSON.stringify(this.cities));
     },
+    // Display cities from locale memory
+    displayCities() {
+      this.cities = JSON.parse(localStorage.getItem("cities") || "{}");
+    },
+    // Render weather data
     renderWeather() {
       this.fetchCityCoord(this.inputCity);
-      this.storeInput();
-      this.displayInput();
+      this.addCity();
+      this.storeCities();
+      this.resetInput();
     },
+
     // Fetch data from Gecoding
     fetchCityCoord(city: string) {
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${1}&appid=${
@@ -127,6 +139,7 @@ export default defineComponent({
         })
         .catch((err) => console.log(err));
     },
+    // Fetch forcasting
     fetchWeatherForecast() {
       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
       this.weatherList = [];
@@ -177,10 +190,16 @@ body {
   margin-bottom: 1.5em;
 }
 
+.btn-city {
+  padding: 0.5em 1em;
+}
+
 .search-field {
   width: 100%;
   font-size: 24px;
   padding: 0.25em 0;
   text-align: center;
 }
+
+
 </style>

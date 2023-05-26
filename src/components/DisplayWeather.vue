@@ -9,7 +9,7 @@
     <p class="paragraph-weather-info">{{ weather.description }}</p>
 
     <section class="section-additonal-weather-info">
-      <span class="humidity">{{ weather.humidity }}%</span>
+      <span class="humidity">humidity {{ weather.humidity }}%</span>
       <span class="pressure">{{ weather.pressure }} hPa</span>
       <span class="wind">{{ weather.wind }} m/s</span>
     </section>
