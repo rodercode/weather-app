@@ -100,7 +100,7 @@ export default defineComponent({
           this.currentWeather.humidity = res.data.main.humidity;
           this.currentWeather.pressure = res.data.main.pressure;
           this.currentWeather.wind = res.data.wind.speed;
-          this.currentWeather.img =
+          this.currentWeather.icon =
             "https://openweathermap.org/img/wn/" +
             res.data.weather[0].icon +
             ".png";
@@ -118,7 +118,7 @@ export default defineComponent({
             let weather = {} as Weather;
             weather.temp = res.data.list[i].main.temp;
             weather.time = this.convertTime(res.data.list[i].dt_txt);
-            weather.img =
+            weather.icon =
             "https://openweathermap.org/img/wn/" +
             res.data.list[i].weather[0].icon +
             ".png";

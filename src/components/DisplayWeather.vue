@@ -2,7 +2,7 @@
   <div v-if="lon !== 0 || lat !== 0" class="container-weather-data">
     <h3 class="city-title">{{ weather.city }}</h3>
     <section class="section-temp">
-      <img :src="weather.img" alt="" />
+      <img :src="weather.icon" alt="" />
       <span class="temp-data">{{ weather.temp }}°C</span>
     </section>
 
