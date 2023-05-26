@@ -73,7 +73,7 @@ export default defineComponent({
     },
     displayInput() {
       const city = localStorage.getItem("city");
-      if (typeof city === "string") {
+      if (typeof city === "string" && this.cities.length < 3) {
         this.cities.push(city);
       }
     },
