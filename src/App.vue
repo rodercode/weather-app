@@ -53,8 +53,15 @@ export default defineComponent({
       this.fetchWeather();
       this.fetchWeatherForecast();
     },
+    // inputCity() {
+    //   this.fetchCityCoord(this.inputCity);
+    // },
   },
   methods: {
+    // uploadWeatherIcon(){
+
+    // }
+
     convertTime(dt_txt: string): string {
       const date = new Date(dt_txt);
       const time = date.toLocaleTimeString([], { timeStyle: "short" });
@@ -93,6 +100,10 @@ export default defineComponent({
           this.currentWeather.humidity = res.data.main.humidity;
           this.currentWeather.pressure = res.data.main.pressure;
           this.currentWeather.wind = res.data.wind.speed;
+          this.currentWeather.img =
+            "https://openweathermap.org/img/wn/" +
+            res.data.weather[0].icon +
+            ".png";
         })
         .catch((err) => console.log(err));
     },
@@ -145,7 +156,6 @@ body,
 
 .search-field {
   width: 100%;
-
   font-size: 24px;
   padding: 0.25em 0;
   text-align: center;

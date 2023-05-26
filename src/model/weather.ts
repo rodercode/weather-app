@@ -7,7 +7,5 @@ export interface Weather {
   pressure: number;
   wind: number;
   speed: number;
+  img: string;
 }
-
-
-
