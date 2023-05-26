@@ -1,10 +1,8 @@
 <template>
   <TopHeader title="App Logo/title" />
   <div class="container-main">
-    <section v-for="city in cities" :key="city" class="section-history">
-      <div class="box-city">{{ city }}</div>
-      <div class="box-city">city_2</div>
-      <div class="box-city">city_3</div>
+    <section v-if="cities.length !== 0" class="section-history">
+      <div v-for="city in cities" :key="city" class="box-city">{{ city }}</div>
     </section>
 
     <input
@@ -74,7 +72,10 @@ export default defineComponent({
       this.inputCity = "";
     },
     displayInput() {
-      this.city = localStorage.getItem("city");
+      const city = localStorage.getItem("city");
+      if (typeof city === "string") {
+        this.cities.push(city);
+      }
     },
     storeInput() {
       if (this.inputCity !== null || this.inputCity !== "") {
