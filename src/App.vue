@@ -57,12 +57,12 @@ export default defineComponent({
   },
   mounted() {
     this.fetchCityCoord("Stockholm");
-    this.fetchWeatherForecast();
   },
 
   watch: {
     lat() {
       this.fetchWeather();
+      this.fetchWeatherForecast();
     },
   },
   methods: {
@@ -71,22 +71,12 @@ export default defineComponent({
       const time = date.toLocaleTimeString([], { timeStyle: "short" });
       console.log(time);
       return time;
-      // const dateStr = "2023-05-25 16:00:00";
-      // const timestamp = new Date(dateStr).getTime() / 1000;
-
-      // const date = new Date(timestamp);
-      // const time =
-      //   ("0" + date.getHours()).slice(-2) +
-      //   ":" +
-      //   ("0" + date.getMinutes()).slice(-2);
-      // console.log(time);
     },
     resetInput() {
       this.inputCity = "";
     },
     renderWeather() {
       this.fetchCityCoord(this.inputCity);
-      this.resetInput();
     },
     // Fetch data from Gecoding
     fetchCityCoord(city: string) {
@@ -119,6 +109,7 @@ export default defineComponent({
     },
     fetchWeatherForecast() {
       const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}${this.unit}`;
+      this.weatherList = [];
 
       axios
         .get(url)
