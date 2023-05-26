@@ -2,7 +2,7 @@
   <TopHeader title="App Logo/title" />
   <div class="container-main">
     <section class="section-history">
-      <div class="box-city">city_1</div>
+      <div class="box-city">{{ city }}</div>
       <div class="box-city">city_2</div>
       <div class="box-city">city_3</div>
     </section>
@@ -41,7 +41,7 @@ export default defineComponent({
       lon: 18,
       lat: 59.3,
       inputCity: "",
-      city: "",
+      city: ("" as string) || null,
       weatherList: [] as Weather[],
     };
   },
@@ -72,18 +72,18 @@ export default defineComponent({
     resetInput() {
       this.inputCity = "";
     },
-    // displayInput() {
-    //   this.city = localStorage.getItem("city");
-    //   console.log(this.testValue);
-    // },
+    displayInput() {
+      this.city = localStorage.getItem("city");
+    },
     storeInput() {
       if (this.inputCity !== null || this.inputCity !== "") {
-        localStorage.setItem("city", (this.city = this.inputCity));
+        localStorage.setItem("city", this.inputCity);
       }
     },
     renderWeather() {
       this.fetchCityCoord(this.inputCity);
       this.storeInput();
+      this.displayInput();
     },
     // Fetch data from Gecoding
     fetchCityCoord(city: string) {
