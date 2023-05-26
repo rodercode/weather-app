@@ -3,7 +3,7 @@
   <div class="container-main">
     <section v-if="cities.length !== 0" class="section-history">
       <div v-for="city in cities" :key="city" class="box-city">
-        <button>{{ city }}</button>
+        <button @click="handleButton">{{ city }}</button>
       </div>
     </section>
 
@@ -44,6 +44,7 @@ export default defineComponent({
       inputCity: "",
       city: ("" as string) || null,
       weatherList: [] as Weather[],
+      clickedButton: null,
     };
   },
   mounted() {
@@ -60,9 +61,10 @@ export default defineComponent({
     // },
   },
   methods: {
-    // uploadWeatherIcon(){
-
-    // }
+    handleButton(e: Event) {
+      const city = e.target.textContent;
+      this.fetchCityCoord(city);
+    },
 
     convertTime(dt_txt: string): string {
       const date = new Date(dt_txt);
