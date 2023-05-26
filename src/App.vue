@@ -2,7 +2,9 @@
   <TopHeader title="App Logo/title" />
   <div class="container-main">
     <section v-if="cities.length !== 0" class="section-history">
-      <div v-for="city in cities" :key="city" class="box-city">{{ city }}</div>
+      <div v-for="city in cities" :key="city" class="box-city">
+        <button>{{ city }}</button>
+      </div>
     </section>
 
     <input
@@ -145,8 +147,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-body,
-.box-city {
+body {
   border: 1px solid black;
   margin-bottom: 1.5em;
 }
@@ -167,8 +168,8 @@ body,
 
 .box-city {
   padding: 0.5em 2.25em 0 2.25em;
-  background-color: rgb(185, 176, 176);
   border-radius: 7px;
+  margin-bottom: 1.5em;
 }
 
 .search-field {
