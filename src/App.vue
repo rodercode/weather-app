@@ -44,7 +44,6 @@ export default defineComponent({
       inputCity: "",
       city: ("" as string) || null,
       weatherList: [] as Weather[],
-      clickedButton: null,
     };
   },
   mounted() {
@@ -77,8 +76,8 @@ export default defineComponent({
     },
     displayInput() {
       const city = localStorage.getItem("city");
-      if (typeof city === "string" && this.cities.length < 3) {
-        this.cities.push(city);
+      if (typeof city === "string") {
+        this.cities.unshift(city);
       }
     },
     storeInput() {
