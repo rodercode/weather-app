@@ -1,7 +1,7 @@
 <template>
   <TopHeader title="App Logo/title" />
   <div class="container-main">
-    <section class="section-history">
+    <section v-for="city in cities" :key="city" class="section-history">
       <div class="box-city">{{ city }}</div>
       <div class="box-city">city_2</div>
       <div class="box-city">city_3</div>
@@ -40,6 +40,7 @@ export default defineComponent({
       currentWeather: {} as Weather,
       lon: 18,
       lat: 59.3,
+      cities: [] as string[],
       inputCity: "",
       city: ("" as string) || null,
       weatherList: [] as Weather[],
